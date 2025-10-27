@@ -1,6 +1,7 @@
 import gradio as gr, numpy as np
 from collections import Counter
 
+# --- In-memory documents ---
 DOCS = [
     "Freight ETA depends on distance, stops, carrier reliability, and port congestion.",
     "Insurance claims triage can be accelerated by categorizing claim types and extracting key entities.",
@@ -11,7 +12,8 @@ VOCAB = sorted(set(" ".join(DOCS).lower().split()))
 IDX = {w:i for i,w in enumerate(VOCAB)}
 
 def vec(text):
-    c = Counter(text.lower().split()); v = np.zeros(len(VOCAB))
+    c = Counter(text.lower().split())
+    v = np.zeros(len(VOCAB))
     for w,n in c.items():
         if w in IDX: v[IDX[w]] = n
     return v
@@ -29,8 +31,48 @@ def retrieve(q, topk=2):
 
 def qa(query):
     ctx = retrieve(query)
-    answer = f"Based on context: {' | '.join(ctx)}. Suggest: enrich with distance, stops, carrier reliability, congestion, and seasonality; use historical patterns for better ETA/decisions."
+    answer = (
+        f"Based on context: {' | '.join(ctx)}.\n\n"
+        f"Suggest: enrich with distance, stops, carrier reliability, congestion, and seasonality; "
+        f"use historical patterns for better ETA/decisions."
+    )
     return answer, "\n- " + "\n- ".join(ctx)
 
-demo = gr.Interface(fn=qa, inputs=gr.Textbox(placeholder="Ask a freight/logistics question..."), outputs=[gr.Textbox(label="Answer"), gr.Textbox(label="Retrieved Context")], title="Freight RAG Assistant (Demo)")
+# --- Predefined example test data ---
+EXAMPLES = [
+    ["How can I improve freight ETA accuracy?"],
+    ["How can insurance claims be processed faster?"],
+    ["What's the best way to reduce CO2 emissions in shipping routes?"],
+    ["What factors delay container shipments?"],
+    ["How to optimize routes and speed up claim approvals?"],
+    ["Who won the football match yesterday?"]
+]
+
+# --- Gradio Interface ---
+with gr.Blocks(title="Freight RAG Assistant (Demo)") as demo:
+    gr.Markdown("""
+    # 🚢 Freight RAG Assistant  
+    _Retrieval-Augmented Generation demo for freight & logistics use cases._  
+
+    Ask a question related to shipping, ETA, claims, or optimization — the app retrieves relevant context and generates a templated AI-style answer.
+
+    ---
+    🧠 **Try these sample questions:**
+    - How can I improve freight ETA accuracy?
+    - How can insurance claims be processed faster?
+    - What’s the best way to reduce CO₂ emissions in shipping routes?
+    - What factors delay container shipments?
+    - How to optimize routes and speed up claim approvals?
+    - Who won the football match yesterday? (unrelated test)
+    ---
+    """)
+
+    inp = gr.Textbox(label="Your Question", placeholder="Ask a freight/logistics question…")
+    out1 = gr.Textbox(label="AI Answer")
+    out2 = gr.Textbox(label="Retrieved Context")
+
+    gr.Examples(examples=EXAMPLES, inputs=inp, label="🧩 Quick test examples")
+    demo_btn = gr.Button("Generate Answer")
+    demo_btn.click(fn=qa, inputs=inp, outputs=[out1, out2])
+
 demo.launch()
