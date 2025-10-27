@@ -1,15 +1,56 @@
 <!DOCTYPE html>
-<html>
-  <head><meta charset="utf-8"><title>Lead Scoring API</title></head>
-  <body style="font-family: sans-serif; text-align:center; margin-top:50px;">
-    <h2>🚀 Lead Scoring API is Live!</h2>
-    <p>POST data to <code>/api/score</code> to get win probability predictions.</p>
-    <p>Example JSON:</p>
-    <pre>{
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lead Scoring API — AI Lab</title>
+  <style>
+    :root{--bg:#0d1117;--card:#161b22;--fg:#e6edf3;--muted:#9da7b1;--accent:#00c6a7}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial;background:var(--bg);color:var(--fg)}
+    .wrap{max-width:820px;margin:56px auto;padding:0 20px}
+    .card{background:var(--card);border:1px solid #222;border-radius:14px;padding:24px}
+    h1{margin:0 0 8px}
+    code,pre{background:#0b0f14;border:1px solid #222;color:#c7d0db;border-radius:8px;padding:4px 6px}
+    pre{padding:14px;overflow:auto}
+    a.btn{display:inline-block;margin-top:10px;padding:10px 14px;border-radius:10px;background:var(--accent);color:#00261f;text-decoration:none;font-weight:700}
+    .muted{color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>🚀 Lead Scoring API is Live</h1>
+    <p class="muted">Serverless FastAPI on Vercel · part of Pratik N Das’ AI Lab</p>
+
+    <div class="card">
+      <h3>Base Endpoint</h3>
+      <p><code>/api</code> → health check</p>
+      <a class="btn" href="./api" target="_blank" rel="noopener">Open /api</a>
+    </div>
+
+    <br/>
+
+    <div class="card">
+      <h3>Predict Win Probability</h3>
+      <p><code>POST /api/score</code> with JSON body:</p>
+      <pre>{
   "budget": 30000,
   "is_enterprise": true,
   "touches": 3,
   "days_to_first_reply": 1
 }</pre>
-  </body>
+      <p class="muted">Response → <code>{"win_probability": 0.xxx}</code></p>
+      <a class="btn" href="./api/docs" target="_blank" rel="noopener">Open API Docs (Swagger)</a>
+    </div>
+
+    <br/>
+
+    <div class="card">
+      <h3>cURL Test</h3>
+      <pre>curl -X POST "https://YOUR-VERCEL-URL.vercel.app/api/score" \
+  -H "Content-Type: application/json" \
+  -d '{"budget":30000,"is_enterprise":true,"touches":3,"days_to_first_reply":1}'</pre>
+      <p class="muted">Replace <code>YOUR-VERCEL-URL</code> with your deployment domain.</p>
+    </div>
+  </div>
+</body>
 </html>
