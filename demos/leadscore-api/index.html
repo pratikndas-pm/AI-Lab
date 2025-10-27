@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,26 +21,29 @@
   <div class="wrap">
     <h1>🚀 Lead Scoring API is Live</h1>
     <p class="muted">Serverless FastAPI on Vercel · part of Pratik N Das’ AI Lab</p>
-
     <div class="card">
-      <h3>Base Endpoint</h3>
-      <p><code>/api</code> → health check</p>
+      <h3>Base Endpoints</h3>
+      <ul>
+        <li><code>/api</code> → health check</li>
+        <li><code>/api/score</code> → POST JSON to get win probability + explanation</li>
+        <li><code>/api/docs</code> → Swagger UI</li>
+      </ul>
       <a class="btn" href="./api" target="_blank" rel="noopener">Open /api</a>
+      <a class="btn" href="./api/docs" target="_blank" rel="noopener">Open Swagger</a>
     </div>
-
     <br/>
-
     <div class="card">
-      <h3>Predict Win Probability</h3>
-      <p><code>POST /api/score</code> with JSON body:</p>
-      <pre>{
+      <h3>Example Request</h3>
+      <pre>POST /api/score
+Content-Type: application/json
+
+{
   "budget": 30000,
   "is_enterprise": true,
   "touches": 3,
   "days_to_first_reply": 1
 }</pre>
-      <p class="muted">Response → <code>{"win_probability": 0.xxx}</code></p>
-      <a class="btn" href="./api/docs" target="_blank" rel="noopener">Open API Docs (Swagger)</a>
+      <p class="muted">Response → <code>{"win_probability": 0.81, "explanation": "...", "inputs": {...}}</code></p>
     </div>
   </div>
 </body>
