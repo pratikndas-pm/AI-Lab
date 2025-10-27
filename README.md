@@ -6,8 +6,8 @@ This lab is a cloud-first portfolio of **hands-on AI demos** — built to run on
 ## ☁️ Live Demos (publish & paste links)
 | Demo | What it shows | Platform | Link |
 |------|----------------|----------|------|
-| ETA Predictor | Classical ML (regression) + metrics | Streamlit Cloud | _add link_ |
-| Cargo Claims Classifier | Lightweight NLP classification | Hugging Face Spaces (Gradio) | _add link_ |
+| ETA Predictor | Classical ML (regression) + metrics | Streamlit Cloud | (https://ai-lab-fufemwfinsyvc9tmasg6wh.streamlit.app) |
+| Cargo Claims Classifier | Lightweight NLP classification | Hugging Face Spaces (Gradio) | (https://huggingface.co/spaces/pratikndas/AI_Lab)|
 | Freight RAG Assistant | Retrieval + templated LLM answer | Hugging Face Spaces (Gradio) | _add link_ |
 | Lead Scoring API | Simple scoring API (FastAPI) | Vercel Serverless | _add link ( /api/score )_ |
 
