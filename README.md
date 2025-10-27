@@ -9,7 +9,7 @@ This lab is a cloud-first portfolio of **hands-on AI demos** — built to run on
 | ETA Predictor | Classical ML (regression) + metrics | Streamlit Cloud | (https://ai-lab-fufemwfinsyvc9tmasg6wh.streamlit.app) |
 | Cargo Claims Classifier | Lightweight NLP classification | Hugging Face Spaces (Gradio) |(https://huggingface.co/spaces/pratikndas/AI_Lab)|
 | Freight RAG Assistant | Retrieval + templated LLM answer | Hugging Face Spaces (Gradio) |(https://huggingface.co/spaces/pratikndas/RAG_Assistant)
-| Lead Scoring API | Simple scoring API (FastAPI) | Vercel Serverless | _add link ( /api/score )_ |
+| Lead Scoring API | Simple scoring API (FastAPI) |Hugging Face Spaces (Gradio)  | https://huggingface.co/spaces/pratikndas/Lead_Scoring|
 
 > Tip: After deployment, update the table with your live URLs.
 
@@ -18,7 +18,7 @@ This lab is a cloud-first portfolio of **hands-on AI demos** — built to run on
 ## 🔧 Deploy (no local run needed)
 - **Streamlit Cloud (ETA Predictor)**: connect repo → pick `/demos/eta-streamlit/app.py`
 - **Hugging Face Spaces (Gradio apps)**: new Space → Gradio template → upload `/demos/claims-gradio/app.py` or `/demos/rag-space/app.py`
-- **Vercel (FastAPI)**: import repo → it auto-detects `api/index.py` (Python runtime via `vercel.json`)
+
 
 ---
 
