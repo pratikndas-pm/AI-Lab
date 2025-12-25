@@ -1,0 +1,7 @@
+# Offline Airline Ops Copilot
+# Zero external dependencies - runs purely on Python standard library
+
+# Python 3.8+ required
+# No external packages needed!
+
+# This system is designed to run completely offline with no API calls or external datasets
